@@ -1,0 +1,54 @@
+* {
+    box-sizing: border-box;
+}
+h1 {
+    text-align: center;
+}
+
+html {
+    font-family: sans-serif;
+}
+
+.moviePlayer, .TVPlayer, .audioPlayer {
+    width: 480px;
+    margin: 10px auto;
+}
+
+video, audio, .movieControls, .TVControls {
+    width: 100%;
+}
+
+.movieControls, .TVControls {
+    z-index: 1;
+    height: 36px;
+}
+
+button {
+    display: block;
+    float: left;
+    border: 0;
+    margin-right: 2px;
+    height: 100%;
+    width: 50px;
+    cursor: pointer;
+}
+
+button:hover, button:focus {
+    background-color: #ddd;
+}
+
+button:active {
+    background-color: #ccc;
+}
+
+.movieControls div, .TVControls div {
+    font-size: 12px;
+    display: inline-block;
+    line-height: 36px;
+    width: 45px;
+    float: right;
+}
+
+video {
+    margin-bottom: -5px;
+}
