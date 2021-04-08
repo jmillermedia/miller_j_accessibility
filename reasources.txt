@@ -3,3 +3,7 @@ https://developer.mozilla.org/en-US/docs/Web/Guide/Audio_and_video_delivery/Addi
 https://developer.mozilla.org/en-US/docs/Learn/Accessibility/Multimedia
 
 https://bootcamp.uxdesign.cc/beginners-guide-to-web-accessibility-514644750b0f
+
+https://developer.mozilla.org/en-US/docs/Web/API/HTMLMediaElement/textTracks
+
+http://chrisdavidmills.github.io/html5-captions-and-subtitles-content-kit/tutorial/
