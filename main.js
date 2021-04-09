@@ -1,63 +1,82 @@
 (() => {
 
-const playPauseBtn = document.querySelector('.playpause');
-const stopBtn = document.querySelector('.stop');
-const rwdBtn = document.querySelector('.rwd');
-const fwdBtn = document.querySelector('.fwd');
-const timeLabel = document.querySelector('.time');
-const player = document.querySelector('video');
+const   playPauseBtn = document.querySelectorAll('.playpause'),
+        stopBtn = document.querySelectorAll('.stop'),
+        rwdBtn = document.querySelectorAll('.rwd'),
+        fwdBtn = document.querySelectorAll('.fwd'),
+        timeLabel = document.querySelectorAll('.time'),
+        player = document.querySelectorAll('video'),
+        capButton = document.querySelectorAll('.captions');
 
-player.removeAttribute('controls');
+player.forEach(screen => screen.removeAttribute('controls'));
+player.forEach(caption => caption.textTracks[0].mode = 'hidden');
 
-playPauseBtn.onclick = function() {
-    if(player.paused) {
-        player.play();
-        playPauseBtn.textContent = 'Pause';
+capButton.forEach(button => button.onclick = function() {
+    let index = this.dataset.button;
+    if (player[index].textTracks[0].mode === 'hidden') {
+        player[index].textTracks[0].mode = 'showing';
+        return;
     } else {
-        player.pause();
-        playPauseBtn.textContent = 'Play';
-    }
-};
+        player[index].textTracks[0].mode = 'hidden';
+    };
+});
 
-stopBtn.onclick = function() {
-    player.pause();
-    player.currentTime = 0;
-    playPauseBtn.textContent = 'Play';
-};
-
-rwdBtn.onclick = function() {
-    player.currentTime -= 3;
-};
-
-fwdBtn.onclick = function() {
-    player.currentTime += 3;
-    if(player.currentTime >= player.duration || player.paused) {
-        player.pause();
-        player.currentTime = 0;
-        playPauseBtn.textContent = 'Play';
-    }
-};
-
-player.ontimeupdate = function() {
-    let minutes = Math.floor(player.currentTime / 60);
-    let seconds = Math.floor(player.currentTime - minutes * 60);
-    let minuteValue;
-    let secondValue;
-
-    if (minutes<10) {
-        minuteValue = "0" + minutes;
+playPauseBtn.forEach(button => button.onclick = function() {
+    let index = this.dataset.button;
+    if(player[index].paused) {
+        player[index].play();
+        playPauseBtn[index].textContent = 'Pause';
+        updateTime(index);
     } else {
-        minuteValue = minutes;
+        player[index].pause();
+        playPauseBtn[index].textContent = 'Play';
     }
+});
 
-    if (seconds<10) {
-        secondValue = "0" + seconds;
-    } else {
-        secondValue = seconds;
+stopBtn.forEach(button => button.onclick = function() {
+    let index = this.dataset.button;
+    player[index].pause();
+    player[index].currentTime = 0;
+    playPauseBtn[index].textContent = 'Play';
+});
+
+rwdBtn.forEach(button => button.onclick = function() {
+    let index = this.dataset.button;
+    player[index].currentTime -= 3;
+});
+
+fwdBtn.forEach(button => button.onclick = function() {
+    let index = this.dataset.button;
+    player[index].currentTime += 3;
+    if(player[index].currentTime >= player[index].duration || player[index].paused) {
+        player[index].pause();
+        player[index].currentTime = 0;
+        playPauseBtn[index].textContent = 'Play';
     }
+});
 
-    mediaTime = minuteValue + ":" + secondValue;
-    timeLabel.textContent = mediaTime;
-};
+function updateTime(index){
+    player[index].ontimeupdate = function() {
+        let minutes = Math.floor(player[index].currentTime / 60);
+        let seconds = Math.floor(player[index].currentTime - minutes * 60);
+        let minuteValue;
+        let secondValue;
+
+        if (minutes<10) {
+            minuteValue = "0" + minutes;
+        } else {
+            minuteValue = minutes;
+        }
+
+        if (seconds<10) {
+            secondValue = "0" + seconds;
+        } else {
+            secondValue = seconds;
+        }
+
+        mediaTime = minuteValue + ":" + secondValue;
+        timeLabel[index].textContent = mediaTime;
+    };
+}
 
 })();

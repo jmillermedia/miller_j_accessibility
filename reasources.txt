@@ -1,5 +1,0 @@
-https://developer.mozilla.org/en-US/docs/Web/Guide/Audio_and_video_delivery/Adding_captions_and_subtitles_to_HTML5_video
-
-https://developer.mozilla.org/en-US/docs/Learn/Accessibility/Multimedia
-
-https://bootcamp.uxdesign.cc/beginners-guide-to-web-accessibility-514644750b0f
