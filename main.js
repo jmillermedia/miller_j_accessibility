@@ -13,7 +13,7 @@ player.forEach(caption => caption.textTracks[0].mode = 'hidden');
 
 capButton.forEach(button => button.onclick = function() {
     let index = this.dataset.button;
-    if (player[index].textTracks[0].mode = 'hidden') {
+    if (player[index].textTracks[0].mode === 'hidden') {
         player[index].textTracks[0].mode = 'showing';
         return;
     } else {
