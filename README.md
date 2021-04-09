@@ -1,4 +1,4 @@
-![header image](images/readmebanner.JPG "Jonathan Miller - Accessibility for Media")
+![header image](images/readmeBanner.JPG "Jonathan Miller - Accessibility for Media")
 
 # Jonathan Miller - Accessibility for Media
 The internet is for everyone, no matter their abilities. This research project is meant to show various types of accessibility for media items within a webpage. It features:
